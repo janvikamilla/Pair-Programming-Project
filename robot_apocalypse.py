@@ -2,7 +2,7 @@ import random
 
 print("=" * 45)
 print("       ROBOT APOCALYPSE")
-print("        SURVIVAL MODE")
+print("        CITY EXPLORATION")
 print("=" * 45)
 
 player = input("\nEnter commander name: ")
@@ -12,84 +12,107 @@ health = 100
 rescued = 0
 enemies_defeated = 0
 
+locations = {
+"1": "Hospital",
+"2": "Shopping Mall",
+"3": "Research Lab",
+"4": "Power Station"
+}
+
 while battery > 0 and health > 0 and rescued < 10:
 
-    print("\n========== COMMAND CENTRE ==========")
-    print("1. Scan for enemies")
-    print("2. Rescue survivors")
-    print("3. Attack enemy")
-    print("4. Repair robot")
-    print("5. System status")
-    print("6. Exit mission")
+print("\n========== COMMAND CENTRE ==========")
+print("1. Explore City")
+print("2. Rescue Survivors")
+print("3. Attack Enemy")
+print("4. Repair Robot")
+print("5. System Status")
+print("6. Exit Mission")
 
-    choice = input("\nEnter command: ")
+choice = input("\nEnter command: ")
 
-    if choice == "1":
-        print("\nScanning city...")
-        battery -= 5
+if choice == "1":
+    print("\nAVAILABLE LOCATIONS:")
 
-        if random.choice([True, False]):
-            print("WARNING! Enemy detected!")
-            health -= 10
-        else:
-            print("Area is safe!")
+    for key, location in locations.items():
+        print(key + ".", location)
 
-    elif choice == "2":
-        print("\nStarting rescue mission...")
-        battery -= 15
+    zone = input("\nChoose location: ")
 
-        people = random.randint(1, 3)
-        rescued += people
-
-        print("Survivors rescued:", people)
-
-    elif choice == "3":
-        print("\nAttacking enemy...")
+    if zone in locations:
+        print("\nExploring:", locations[zone])
         battery -= 10
 
-        if random.choice([True, False]):
-            enemies_defeated += 1
-            print("Enemy defeated!")
+        event = random.choice(["enemy", "safe", "survivor"])
+
+        if event == "enemy":
+            print("WARNING! Enemy robot detected!")
+            health -= 15
+
+        elif event == "safe":
+            print("Area secured successfully!")
+
         else:
-            health -= 20
-            print("Enemy counterattacked!")
-
-    elif choice == "4":
-        if battery >= 10:
-            health = min(100, health + 30)
-            battery -= 10
-            print("Robot repaired!")
-        else:
-            print("Not enough battery!")
-
-    elif choice == "5":
-        print("\nBattery:", battery, "%")
-        print("Health:", health, "%")
-        print("Survivors:", rescued)
-        print("Enemies defeated:", enemies_defeated)
-
-    elif choice == "6":
-        print("\nMission abandoned!")
-        break
+            print("Survivors discovered!")
+            rescued += 2
 
     else:
-        print("Invalid command!")
+        print("Invalid location!")
 
-    print("\nBattery:", battery, "%")
+elif choice == "2":
+    battery -= 15
+    people = random.randint(1, 3)
+    rescued += people
+    print("Survivors rescued:", people)
+
+elif choice == "3":
+    battery -= 10
+
+    if random.choice([True, False]):
+        enemies_defeated += 1
+        print("Enemy destroyed!")
+
+    else:
+        health -= 20
+        print("Enemy counterattack!")
+        
+elif choice == "4":
+    if battery >= 10:
+        health = min(100, health + 30)
+        battery -= 10
+        print("Robot repaired!")
+
+    else:
+        print("Not enough battery!")
+
+elif choice == "5":
+    print("\nCOMMANDER:", player)
+    print("Battery:", battery, "%")
     print("Health:", health, "%")
+    print("Survivors:", rescued)
+    print("Enemies defeated:", enemies_defeated)
 
-    if battery <= 20:
-        print("LOW BATTERY WARNING!")
+elif choice == "6":
+    print("Mission abandoned!")
+    break
 
-    if health <= 20:
-        print("CRITICAL HEALTH WARNING!")
+else:
+    print("Invalid command!")
+
+if battery <= 20:
+    print("\nLOW BATTERY WARNING!")
+
+if health <= 20:
+    print("\nCRITICAL HEALTH WARNING!")
 
 if rescued >= 10:
-    print("\n🏆 MISSION SUCCESS!")
+print("\n🏆 CITY RESCUE SUCCESSFUL!")
+
 elif health <= 0:
-    print("\n💀 ROBOT DESTROYED!")
+print("\nROBOT DESTROYED!")
+
 elif battery <= 0:
-    print("\n🔋 ROBOT SHUTDOWN!")
+print("\nROBOT SHUTDOWN!")
 
 print("\n========== FINAL REPORT ==========")
 print("Commander:", player)
