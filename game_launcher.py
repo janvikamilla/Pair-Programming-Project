@@ -16,34 +16,9 @@ games = {
     "11": ("Robot Customization", "robot_customization.py"),
     "12": ("Mission Generator", "robot_mission_generator.py"),
     "13": ("Zombie Outbreak", "zombie_outbreak.py"),
-    "14": ("Secret Bunker", "secret_bunker.py")
+    "14": ("Secret Bunker", "secret_bunker.py"),
+    "15": ("AI Enemy Intelligence", "ai_enemy.py")
 }
 
 while True:
-    print("\n" + "=" * 45)
-    print("          ROBOT APOCALYPSE")
-    print("           MAIN CONTROL HUB")
-    print("=" * 45)
-
-    for number, (name, filename) in games.items():
-        print(number + ". " + name)
-
-    print("0. Exit Game")
-    print("=" * 45)
-
-    choice = input("Enter your choice: ")
-
-    if choice == "0":
-        print("System shutting down...")
-        break
-
-    elif choice in games:
-        selected_game = games[choice][1]
-
-        if os.path.exists(selected_game):
-            subprocess.run([sys.executable, selected_game])
-        else:
-            print("ERROR: Game file not found!")
-
-    else:
-        print("Invalid choice!")
+    print
