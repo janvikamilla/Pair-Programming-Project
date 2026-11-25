@@ -15,7 +15,8 @@ games = {
     "10": ("Robot Inventory", "robot_inventory.py"),
     "11": ("Robot Customization", "robot_customization.py"),
     "12": ("Mission Generator", "robot_mission_generator.py"),
-    "13": ("Zombie Outbreak", "zombie_outbreak.py")
+    "13": ("Zombie Outbreak", "zombie_outbreak.py"),
+    "14": ("Secret Bunker", "secret_bunker.py")
 }
 
 while True:
