@@ -1,64 +1,52 @@
-print("=" * 40)
-print("       ROBOT CUSTOMIZATION GARAGE")
-print("=" * 40)
+import os
+import sys
+import subprocess
 
-robot_name = "APOCALYPSE-X"
-armor = 50
-attack = 40
-speed = 30
-coins = 200
+def show_menu():
+    print("\n" + "=" * 45)
+    print("          ROBOT APOCALYPSE")
+    print("           MAIN CONTROL HUB")
+    print("=" * 45)
+
+    games = {
+        "1": ("Main Survival Mission", "robot_apocalypse.py"),
+        "2": ("Disaster Alert System", "disaster_events.py"),
+        "3": ("Robot Army", "robot_army.py"),
+        "4": ("Alien Invasion", "alien_invasion.py"),
+        "5": ("Black Market", "black_market.py"),
+        "6": ("Hacking Terminal", "hacking_terminal.py"),
+        "7": ("Final Apocalypse", "final_apocalypse.py"),
+        "8": ("Player Achievements", "player_achievements.py"),
+        "9": ("Robot Battle Arena", "robot_battle_arena.py"),
+        "10": ("Robot Inventory", "robot_inventory.py"),
+        "11": ("Robot Customization", "robot_customization.py"),
+        "12": ("Mission Generator", "robot_mission_generator.py")
+    }
+
+    for number, (name, filename) in games.items():
+        print(number + ". " + name)
+
+    print("0. Exit Game")
+    print("=" * 45)
+
+    return games
+
 
 while True:
-    print("\n===== ROBOT GARAGE =====")
-    print("Coins:", coins)
-    print("1. Change Robot Name")
-    print("2. Upgrade Armor - 50 coins")
-    print("3. Upgrade Attack - 70 coins")
-    print("4. Upgrade Speed - 60 coins")
-    print("5. View Robot Stats")
-    print("0. Exit Garage")
+    games = show_menu()
+    choice = input("\nEnter your choice: ")
 
-    choice = input("\nChoose an option: ")
-
-    if choice == "1":
-        robot_name = input("Enter new robot name: ")
-        print("Robot renamed successfully!")
-
-    elif choice == "2":
-        if coins >= 50:
-            armor += 10
-            coins -= 50
-            print("Armor upgraded!")
-        else:
-            print("Not enough coins!")
-
-    elif choice == "3":
-        if coins >= 70:
-            attack += 10
-            coins -= 70
-            print("Attack upgraded!")
-        else:
-            print("Not enough coins!")
-
-    elif choice == "4":
-        if coins >= 60:
-            speed += 10
-            coins -= 60
-            print("Speed upgraded!")
-        else:
-            print("Not enough coins!")
-
-    elif choice == "5":
-        print("\n===== ROBOT SPECIFICATIONS =====")
-        print("Name:", robot_name)
-        print("Armor:", armor)
-        print("Attack:", attack)
-        print("Speed:", speed)
-        print("Coins:", coins)
-
-    elif choice == "0":
-        print("Leaving Robot Garage...")
+    if choice == "0":
+        print("System shutting down...")
         break
+
+    elif choice in games:
+        selected_game = games[choice][1]
+
+        if os.path.exists(selected_game):
+            subprocess.run([sys.executable, selected_game])
+        else:
+            print("ERROR: Game file not found!")
 
     else:
         print("Invalid choice!")
