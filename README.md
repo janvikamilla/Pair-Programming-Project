@@ -77,3 +77,24 @@ This project was created to explore Python programming through interactive game 
 ---
 
 Welcome to the Apocalypse. Your survival starts now! ☠️
+
+🤝 Team Contributions
+
+This project is a collaborative effort focused on Python programming, game development and creative problem-solving.
+
+👩‍💻 Project Team
+
+- Janvi Kamilla — Project Creator, Game Development and Project Management.
+- Mangesh — Collaborative Development and Project Contributions.
+- Hitesh — Collaborative Development and Project Contributions.
+- Nikhil — Collaborative Development and Project Contributions.
+
+🚀 Our Goal
+
+To build an interactive Robot Apocalypse survival simulator using Python while learning programming, teamwork and problem-solving.
+
+🤝 Teamwork
+
+Every contribution helps make this project better!
+
+Together, we survive the Apocalypse! ☠️
