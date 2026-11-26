@@ -98,3 +98,5 @@ To build an interactive Robot Apocalypse survival simulator using Python while l
 Every contribution helps make this project better!
 
 Together, we survive the Apocalypse! ☠️
+
+This project was developed through collaborative learning and Python game development.
