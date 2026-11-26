@@ -4,7 +4,7 @@ player_health = 100
 enemy_health = 100
 
 print("=" * 40)
-print("       AI ENEMY INTELLIGENCE")
+print("AI ENEMY INTELLIGENCE")
 print("=" * 40)
 
 while player_health > 0 and enemy_health > 0:
@@ -16,23 +16,26 @@ while player_health > 0 and enemy_health > 0:
     print("2. Defend")
     print("3. Repair")
 
-    choice = input("\nChoose your action: ")
+    choice = input("Choose your action: ")
+
+    defending = False
 
     if choice == "1":
         damage = random.randint(15, 30)
         enemy_health -= damage
-        print("\nYou attacked the enemy!")
+        print("You attacked!")
         print("Damage:", damage)
 
     elif choice == "2":
-        print("\nYou entered defensive mode!")
+        defending = True
+        print("Defensive mode activated!")
 
     elif choice == "3":
         player_health = min(100, player_health + 20)
-        print("\nRobot repaired!")
+        print("Robot repaired!")
 
     else:
-        print("Invalid action!")
+        print("Invalid choice!")
         continue
 
     if enemy_health <= 0:
@@ -42,31 +45,35 @@ while player_health > 0 and enemy_health > 0:
 
     if player_health < 30:
         ai_action = "ATTACK"
-    elif enemy_health < 30:
-        ai_action = random.choice(["ATTACK", "DEFEND"])
     else:
-        ai_action = random.choice(["ATTACK", "DEFEND", "SPECIAL"])
+        ai_action = random.choice(
+            ["ATTACK", "DEFEND", "SPECIAL"]
+        )
 
     if ai_action == "ATTACK":
         damage = random.randint(15, 25)
-        player_health -= damage
-        print("AI launched an attack!")
-        print("Damage received:", damage)
 
-    elif ai_action == "DEFEND":
-        print("AI activated defensive shield!")
+    elif ai_action == "SPECIAL":
+        damage = random.randint(25, 35)
 
     else:
-        damage = random.randint(25, 35)
-        player_health -= damage
-        print("AI USED SPECIAL ATTACK!")
-        print("Damage received:", damage)
+        damage = 0
+        print("AI activated its shield!")
 
-print("\n" + "=" * 40)
+    if defending:
+        damage = damage // 2
+
+    player_health -= damage
+
+    print("AI action:", ai_action)
+    print("Damage received:", damage)
+
+print("\n========== BATTLE RESULT ==========")
 
 if player_health > 0:
     print("VICTORY! YOU DEFEATED THE AI!")
 else:
     print("DEFEAT! AI DESTROYED YOUR ROBOT.")
 
-print("=" * 40)
+print("Final Player Health:", max(0, player_health))
+print("Final Enemy Health:", max(0, enemy_health))
