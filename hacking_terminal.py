@@ -16,56 +16,35 @@ print("Crack the 4-digit access code.")
 
 while attempts > 0:
 
-print("\nAttempts remaining:", attempts)
+    print("\nAttempts remaining:", attempts)
 
-guess = input("Enter access code: ")
+    guess = input("Enter access code: ")
 
-if not guess.isdigit() or len(guess) != 4:
-    print("Enter a valid 4-digit code!")
-    continue
+    if not guess.isdigit() or len(guess) != 4:
+        print("Enter a valid 4-digit code!")
+        continue
 
-guess = int(guess)
+    guess = int(guess)
 
-if guess == secret_code:
-    print("\nACCESS GRANTED!")
-    hacked = True
-    break
+    if guess == secret_code:
+        print("\nACCESS GRANTED!")
+        hacked = True
+        data_coins = 200
+        break
 
-elif guess < secret_code:
-    print("Hint: Try a HIGHER code!")
+    elif guess < secret_code:
+        print("Hint: Try a HIGHER code!")
 
-else:
-    print("Hint: Try a LOWER code!")
+    else:
+        print("Hint: Try a LOWER code!")
 
-attempts -= 1
+    attempts -= 1
 
 if hacked:
-
-print("\nENEMY DATABASE UNLOCKED!")
-
-secrets = [
-    "Enemy robot locations discovered!",
-    "Secret weapon blueprint discovered!",
-    "Alien invasion plan discovered!",
-    "Hidden underground base discovered!"
-]
-
-print(random.choice(secrets))
-
-data_coins = random.randint(100, 500)
-
-print("\nDATA REWARD:", data_coins, "coins")
-
+    print("\nENEMY DATABASE HACKED!")
+    print("You earned", data_coins, "data coins!")
 else:
+    print("\nACCESS DENIED!")
+    print("The secret code was:", secret_code)
 
-print("\nACCESS DENIED!")
-print("Enemy security detected your attempt!")
-
-print("🚨 SECURITY ALERT ACTIVATED!")
-
-print("\n========== HACKING REPORT ==========")
-print("System hacked:", hacked)
-print("Reward:", data_coins)
-print("Attempts remaining:", attempts)
-
-print("\nHACKING TERMINAL OFFLINE.")
+print("\nHACKING SESSION TERMINATED.")
