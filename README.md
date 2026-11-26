@@ -100,3 +100,17 @@ Every contribution helps make this project better!
 Together, we survive the Apocalypse! ☠️
 
 This project was developed through collaborative learning and Python game development.
+
+🚀 Latest Project Update
+
+The Robot Apocalypse project is continuously evolving with new features and improvements.
+
+Current Development Goals
+
+- Improve the main game launcher.
+- Enhance robot battles and enemy AI.
+- Add new survival missions and challenges.
+- Improve player inventory and customization.
+- Test and improve individual game modules.
+
+Team: Janvi Kamilla, Mangesh, Hitesh and Nikhil.
